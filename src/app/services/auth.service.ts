@@ -34,7 +34,8 @@ export class AuthService {
 
     let decodedJwt: any = jwtDecode(this.accessToken!);
     this.username = decodedJwt.sub;
-    this.roles = decodedJwt.scope.split(" ");
+    this.roles = decodedJwt.scope.split(" "); 
+    window.localStorage.setItem("jwtrole", this.accessToken || "");
   }
 
   public saveTokenInLocalStorage() {
@@ -43,7 +44,7 @@ export class AuthService {
     }
   }
 
-  public loadTokenFromLocalStorage() {
+  public loadJWTTokenFromLocalStorage() {
     let token = window.localStorage.getItem("jwtToken");
     if (token) {
       let data = { access_token: token };

@@ -13,7 +13,7 @@ export class CustomerService {
   if (!keyword || keyword.trim() === '') {
     return this.http.get<Customer[]>(environment.backendHost+"/customers"); // Récupérer tous les clients
   } else {
-    return this.http.get<Customer[]>(environment.backendHost+"/search?keyword=${keyword}");
+    return this.http.get<Customer[]>(`${environment.backendHost}/customers/search?keyword=${keyword}`);
   }
 }
 
